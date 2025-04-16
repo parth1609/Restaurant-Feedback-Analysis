@@ -46,14 +46,25 @@ DB_PASSWORD=your_mysql_password
 DB_NAME=your_database_name
 ```
 
-5. Pull the required Ollama model:
-```bash
-ollama pull deepseek-coder-v2
-```
+5. **Set up Ollama:**
+
+    * Download and install Ollama from https://ollama.ai
+    * Run Ollama server
+    * Pull the required LLM.
 
 ## Database Setup
 
 1. Create a MySQL database
+   1. Create Database ```restaurant_feedback```
+   2. create tables
+      ```
+        answers    
+         feedback                      
+        questions                     
+         restaurants                  
+         users   
+      ```
+    
 2. Run the following SQL to create the required table:
 ```sql
 CREATE TABLE restaurant_feedback (
