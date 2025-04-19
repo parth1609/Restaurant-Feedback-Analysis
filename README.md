@@ -64,6 +64,54 @@ DB_NAME=your_database_name
          restaurants                  
          users   
       ```
+   3. for users table
+      ```sql
+       CREATE TABLE users (
+       user_id INT AUTO_INCREMENT PRIMARY KEY,
+       name VARCHAR(255) NOT NULL,
+       email VARCHAR(255) UNIQUE NOT NULL,
+       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+      ```
+   4. for restaurants table
+      ```sql
+      CREATE TABLE restaurants (
+       restaurant_id INT AUTO_INCREMENT PRIMARY KEY,
+       name VARCHAR(255) NOT NULL,
+       location VARCHAR(255),
+       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+      ```
+   5. for questions table
+      ```sql
+         CREATE TABLE questions (
+       question_id INT AUTO_INCREMENT PRIMARY KEY,
+       question_text TEXT NOT NULL
+         );
+      ```
+   6. for feedback table
+      ```sql
+      CREATE TABLE feedback (
+       feedback_id INT AUTO_INCREMENT PRIMARY KEY,
+       user_id INT,
+       restaurant_id INT,
+       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+       FOREIGN KEY (user_id) REFERENCES users(user_id),
+       FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id)
+         );
+      ```
+   7. for answer table
+      ```sql
+         CREATE TABLE answers (
+       answer_id INT AUTO_INCREMENT PRIMARY KEY,
+      feedback_id INT,
+       question_id INT,
+       answer_text TINYINT(1) NOT NULL DEFAULT 0,
+       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+       FOREIGN KEY (feedback_id) REFERENCES feedback(feedback_id),
+       FOREIGN KEY (question_id) REFERENCES questions(question_id)
+         );
+      ```
     
 2. Run the following SQL to create the required table:
 ```sql
